@@ -1,0 +1,20 @@
+{
+    "name": "glen/slack-unfurl-dokuwiki",
+    "description": "dokuwiki links unfurler for slack-unfurl",
+    "license": "MIT",
+    "config": {
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "DokuWikiSlackUnfurl\\": "src/"
+        }
+    },
+    "require": {
+        "php": "^7.1.3"
+    },
+    "require-dev": {
+        "glen/slack-unfurl": "~0.4.0",
+        "symfony/var-dumper": "^4.0"
+    }
+}
