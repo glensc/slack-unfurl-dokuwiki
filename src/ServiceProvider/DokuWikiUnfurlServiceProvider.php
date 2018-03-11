@@ -16,11 +16,13 @@ class DokuWikiUnfurlServiceProvider implements ServiceProviderInterface, EventLi
         $app['dokuwiki.username'] = getenv('DOKUWIKI_USERNAME');
         $app['dokuwiki.password'] = getenv('DOKUWIKI_PASSWORD');
 
-        $app[DokuWikiUnfurler::class] = function ($app) {
-            $domain = parse_url($app['dokuwiki.url'], PHP_URL_HOST);
+        $app['dokuwiki.domain'] = function ($app) {
+            return parse_url($app['dokuwiki.url'], PHP_URL_HOST);
+        };
 
+        $app[DokuWikiUnfurler::class] = function ($app) {
             return new DokuWikiUnfurler(
-                $domain,
+                $app['dokuwiki.domain'],
                 $app['logger']
             );
         };
